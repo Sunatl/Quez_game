@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'detail_q.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {%  bootstrap_javascript %}
+    
+</head>
+<body>
+
+
+    <header>
+            <div class="a111">
+            <h1>Welcome your Detail</h1> <br>
+            <a style="width: 50 px; height: 30px;margin-top: 50px" href="{% url 'list_c' %}">Menu</a>
+            <a style="width: 50 px; height: 30px;margin-top: 50px"  href="{% url 'delete_c' object.id %}">Delete</a>
+            <a style="width: 50 px; height: 30px;margin-top: 50px" href="{% url 'update_c' object.id %}">Update</a>
+    </div>
+    </header>
+    {% block content %}
+    <div class="container">
+            <div class="card">
+                
+                <h3>Name: {{object.name}}</h3>
+                
+{% for sub in sabcategory %}
+                <tr>
+                    <h3>Subcotegory: {{ sub.title }}</h3>
+                    
+                </tr>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+{% endblock content %}
+</body>
+</html>

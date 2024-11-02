@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'detail_qq.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {%  bootstrap_javascript %}
+    
+</head>
+<body>
+
+
+    <header>
+            <div class="a111">
+            <h1>Welcome your Detail</h1> <br>
+            <a style="width: 50 px; height: 30px;margin-top: 50px" href="{% url 'list_sub' %}">Menu</a>
+            <a style="width: 50 px; height: 30px;margin-top: 50px"  href="{% url 'delete_sub' object.id %}">Delete</a>
+            <a style="width: 50 px; height: 30px;margin-top: 50px" href="{% url 'update_sub' object.id %}">Update</a>
+    </div>
+    </header>
+    {% block content %}
+    <div class="container">
+            <div class="card">
+                
+                <h3>Title: {{object.title}}</h3>
+                <h3>category: {{object.category}}</h3>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="card">
+{% for sub in ques %}
+                <h3>Subcotegory: {{ sub.title }}</h3>
+                <h3>Subcotegory: {{ sub.description }}</h3>
+                <h3>Subcotegory: {{ sub.user }}</h3>
+                <h3>Resume: <a href="{{ sub.resume }}" download>Download</a></h3>
+                <h3 style="width: 25%;"><img style="width: 50%;  " src="{{ sub.image }}" alt=""></h3>
+
+                
+            {% endfor %}
+            </div>
+</div>
+
+
+{% endblock content %}
+</body>
+</html>

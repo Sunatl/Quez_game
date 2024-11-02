@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'list_ques.css' %}">
+</head>
+<body>
+
+    <div class="a1">
+        <h1>Answer</h1>
+        <div class="base">
+        <a href="{% url 'base' %}"><h3 class="sas">Home</h3></a>
+        <a href="{% url 'create_user' %}"><h3 class="sas">Add</h3></a>
+    </div>
+    </div>
+
+
+<div class="b1">
+        <table>
+            <caption> <h3>User</h1> </caption>
+            <tr>
+                <th>Image</th>
+                <th>Fullname</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>Username</th>
+                <th>Detail</th>
+            </tr>
+        {% for usr in object_list %}
+        <tr>
+    <td style="width: 25%;"><img style="width: 50%;  " src="{{ usr.image }}" alt=""></td>
+        <td>{{ usr.fulname }}</td>
+        <td>{{ usr.age }}</td>
+        <td>{{ usr.phone }}</td>
+        <td>{{ usr.username }}</td>
+        <td><a href="{% url 'detail_user' usr.id %}">Get</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+        </div>
+<br><br><br>
+    </head>
+    <body>

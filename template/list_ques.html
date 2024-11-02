@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'list_ques.css' %}">
+</head>
+<body>
+
+    <div class="a1">
+        <h1>Question</h1>
+        <div class="base">
+        <a href="{% url 'base' %}"><h3 class="sas">Home</h3></a>
+        <a href="{% url 'create_ques' %}"><h3 class="sas">Add</h3></a>
+    </div>
+    </div>
+
+
+<div class="b1">
+        <table>
+            <caption> <h3>QUESTION</h1> </caption>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>user</th>
+                <th>Category</th>
+                <th>created_at</th>
+                <th>is_active</th>
+                <th>Detail</th>
+            </tr>
+        {% for ques in object_list %}
+        <tr>
+    <td style="width: 25%;"><img style="width: 50%;  " src="{{ ques.image }}" alt=""></td>
+        <td>{{ ques.title }}</td>
+        <td>{{ ques.description }}</td>
+        <td>{{ ques.user }}</td>
+        <td>{{ ques.category }}</td>
+        <td>{{ ques.created_at }}</td>
+        <td>{{ ques.is_active }}</td>
+        <td><a href="{% url 'detail_ques' ques.id %}">Get</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+        </div>
+<br><br><br>
+    </head>
+    <body>

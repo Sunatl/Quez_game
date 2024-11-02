@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'list_ques.css' %}">
+</head>
+<body>
+
+    <div class="a1">
+        <h1>Answer</h1>
+        <div class="base">
+        <a href="{% url 'base' %}"><h3 class="sas">Home</h3></a>
+        <a href="{% url 'create_anwr' %}"><h3 class="sas">Add</h3></a>
+    </div>
+    </div>
+
+
+<div class="b1">
+        <table>
+            <caption> <h3>Answer</h1> </caption>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>user</th>
+                <th>Ques</th>
+                <th>created_at</th>
+                <th>is_active</th>
+                <th>Detail</th>
+            </tr>
+        {% for anwr in object_list %}
+        <tr>
+    <td style="width: 25%;"><img style="width: 50%;  " src="{{ anwr.image }}" alt=""></td>
+        <td>{{ anwr.title }}</td>
+        <td>{{ anwr.description }}</td>
+        <td>{{ anwr.user }}</td>
+        <td>{{ anwr.ques_id }}</td>
+        <td>{{ anwr.created_at }}</td>
+        <td>{{ anwr.is_active }}</td>
+        <td><a href="{% url 'detail_anwr' anwr.id %}">Get</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+        </div>
+<br><br><br>
+    </head>
+    <body>
